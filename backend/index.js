@@ -3,9 +3,20 @@ const app = express();
 require('dotenv').config();
 const port =process.env.PORT ||5000;
 const cors = require('cors');
-app.use(cors(corsOptions));
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+mongoose.connect(process.env.MONGODB_URI, {UseUnifiedTopology:true,useNewUrlParser:true})
+.then(()=>console.log('Connected to MongoDB'))
+.catch(err=>console.log(err));
 const corsOptions= {
     origin: 'http://localhost:3000',
-    optionsSuccessStatus: 200,
-    
+    optionsSuccessStatus: 200,   
 }
+app.use(cors(corsOptions));
+
+
+app.listen(port,()=>{
+    console.log(`Server is running on port ${port}`);
+})
