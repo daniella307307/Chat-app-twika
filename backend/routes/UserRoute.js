@@ -5,5 +5,5 @@ router.post('/register',userController.register);
 router.post('/login',userController.login);
 router.put('/update',userController.updateProfile);
 router.delete('/delete',userController.deleteProfile);
-router.get('/get',userController.getUser);
+router.post('/get',userController.getUser);
 module.exports=router;
