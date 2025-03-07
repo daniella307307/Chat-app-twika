@@ -23,6 +23,14 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="*"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
         <Route path='/signup' element={<Register/>}/>
       </Routes>
     </Router>
