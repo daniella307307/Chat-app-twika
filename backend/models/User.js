@@ -19,6 +19,10 @@ const UserSchema= new Schema({
         required:true,
         minlength:6
     },
+    profileImg:{
+        type:"string",
+        default:null
+    }
 
 },{
     timestamps:true,

@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const userRoute=require('./routes/UserRoute');
 const messageRoute=require('./routes/MessageRoute');
+const artRoute = require('./routes/ArtRoute');
+const categoryRoute = require('./routes/CategoryRoute');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 mongoose.connect(process.env.MONGODB_URI, {UseUnifiedTopology:true,useNewUrlParser:true})
@@ -21,6 +23,8 @@ const corsOptions= {
 app.use(cors(corsOptions));
 app.use('/api/user',userRoute);
 app.use('/api/message',messageRoute);
+app.use('/api/art', artRoute);
+app.use('/api/art/category', categoryRoute);
 
 app.listen(port,()=>{
     console.log(`Server is running on port ${port}`);
